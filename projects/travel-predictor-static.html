@@ -1,0 +1,507 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Destination Predictor | Afonso Macedo</title>
+    <link rel="stylesheet" href="/MyData/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>AM</text></svg>">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166088;
+            --accent-color: #4fc3dc;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --dark-bg: #1a1a1a;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --error-color: #dc3545;
+            --border-radius-md: 10px;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --gray-color: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+        
+        main {
+            padding-top: 80px;
+        }
+        
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text-color);
+        }
+        
+        .predictor-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 900px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group select,
+        .form-group input[type="number"],
+        .form-group input[type="range"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .range-container input[type="range"] {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        
+        .range-value {
+            width: 40px;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .results-container {
+            display: none;
+            margin-top: 40px;
+        }
+        
+        .results-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+        
+        .destination-cards {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .destination-list {
+            list-style-position: inside;
+            padding: 0;
+            counter-reset: destination-counter;
+        }
+        
+        .destination-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            position: relative;
+            counter-increment: destination-counter;
+            transition: transform 0.3s;
+        }
+        
+        .destination-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .destination-item::before {
+            content: counter(destination-counter);
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .destination-info {
+            padding: 20px;
+        }
+        
+        .destination-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .destination-type {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .destination-match {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .match-label {
+            margin-right: 10px;
+            font-weight: 500;
+        }
+        
+        .match-bar {
+            flex-grow: 1;
+            height: 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .match-progress {
+            height: 100%;
+            background-color: var(--accent-color);
+        }
+        
+        .match-percentage {
+            margin-left: 10px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--dark-bg);
+            color: #fff;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .footer-text {
+            margin: 20px 0;
+        }
+        
+        .footer-social {
+            display: flex;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-left: 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .destination-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-social {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/MyData/index.html">AM</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/MyData/index.html">Home</a></li>
+                <li><a href="/MyData/index.html#about">About</a></li>
+                <li><a href="/MyData/index.html#projects" class="active">Projects</a></li>
+                <li><a href="/MyData/index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Travel Destination Predictor</h1>
+                <p>Find your perfect travel destination based on your preferences using machine learning</p>
+            </div>
+        </section>
+
+        <section class="predictor-container">
+            <div class="container">
+                <form id="predictorForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="budget">Budget Level (1-5)</label>
+                            <select id="budget" name="budget">
+                                <option value="1">1 - Budget Friendly</option>
+                                <option value="2">2 - Economical</option>
+                                <option value="3" selected>3 - Moderate</option>
+                                <option value="4">4 - Premium</option>
+                                <option value="5">5 - Luxury</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="travel_type">Preferred Travel Type</label>
+                            <select id="travel_type" name="travel_type">
+                                <option value="Beach">Beach</option>
+                                <option value="City">City</option>
+                                <option value="Mountain">Mountain</option>
+                                <option value="Adventure">Adventure</option>
+                                <option value="Nature">Nature</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="continent">Preferred Continent</label>
+                            <select id="continent" name="continent">
+                                <option value="Any" selected>Any Continent</option>
+                                <option value="Europe">Europe</option>
+                                <option value="Asia">Asia</option>
+                                <option value="North America">North America</option>
+                                <option value="South America">South America</option>
+                                <option value="Africa">Africa</option>
+                                <option value="Oceania">Oceania</option>
+                                <option value="Central America">Central America</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="has_children">Traveling with Children?</label>
+                            <select id="has_children" name="has_children">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group children-options" style="display: none;">
+                            <label for="num_children">Number of Children</label>
+                            <input type="number" id="num_children" name="num_children" min="0" max="10" value="0">
+                        </div>
+                        
+                        <div class="form-group children-options" style="display: none;">
+                            <label for="youngest_child_age">Age of Youngest Child</label>
+                            <input type="number" id="youngest_child_age" name="youngest_child_age" min="0" max="18" value="0">
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 20px;">Importance of Activities (0-10)</h3>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="culture_importance">Cultural Activities</label>
+                            <div class="range-container">
+                                <input type="range" id="culture_importance" name="culture_importance" min="0" max="10" value="5">
+                                <span class="range-value" id="culture_importance_value">5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nature_importance">Nature & Outdoors</label>
+                            <div class="range-container">
+                                <input type="range" id="nature_importance" name="nature_importance" min="0" max="10" value="5">
+                                <span class="range-value" id="nature_importance_value">5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="adventure_importance">Adventure Activities</label>
+                            <div class="range-container">
+                                <input type="range" id="adventure_importance" name="adventure_importance" min="0" max="10" value="5">
+                                <span class="range-value" id="adventure_importance_value">5</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="relaxation_importance">Relaxation</label>
+                            <div class="range-container">
+                                <input type="range" id="relaxation_importance" name="relaxation_importance" min="0" max="10" value="5">
+                                <span class="range-value" id="relaxation_importance_value">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <button type="submit" class="btn" id="predictBtn">Find My Destinations</button>
+                    </div>
+                </form>
+                
+                <div class="results-container" id="resultsContainer">
+                    <h2>Your Top Destination Matches</h2>
+                    <div class="destination-cards" id="destinationCards">
+                        <!-- Results will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">AM</div>
+                <div class="footer-text">
+                    <p>&copy; 2025 Afonso Macedo. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/MyData/js/destinations.js"></script>
+    <script src="/MyData/js/travel-predictor.js"></script>
+</body>
+</html>
+

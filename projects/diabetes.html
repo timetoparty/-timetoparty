@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction Tool | Afonso Macedo</title>
+    <link rel="stylesheet" href="/MyData/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>AM</text></svg>">
+    <style>
+        .diabetes-tool {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--light-color);
+        }
+        
+        .diabetes-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .diabetes-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .diabetes-header p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .diabetes-content {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .input-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 20px 40px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .input-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient-primary);
+        }
+        
+        .form-title {
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-color);
+        }
+        
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius-sm);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+        
+        .input-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(45, 91, 255, 0.1);
+            background-color: white;
+        }
+        
+        .input-group .input-hint {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            margin-top: 0.25rem;
+        }
+
+        .result-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .result-card {
+            background-color: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 20px 40px var(--shadow-color);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .result-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(45, 91, 255, 0.25);
+        }
+        
+        .result-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .result-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .result-message {
+            color: var(--gray-color);
+            margin-bottom: 1rem;
+        }
+        
+        .info-card {
+            background-color: white;
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 20px 40px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient-primary);
+        }
+        
+        .info-title {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .info-text {
+            color: var(--gray-color);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .info-card ul {
+            padding-left: 1.5rem;
+        }
+        
+        .info-card li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: var(--gray-color);
+        }
+        
+        .back-link {
+            display: block;
+            margin-top: var(--spacing-md);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .diabetes-content {
+                flex-direction: column;
+            }
+            
+            .result-container {
+                order: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <span>AM</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/MyData/index.html">Home</a></li>
+                <li><a href="/MyData/index.html#about">About</a></li>
+                <li><a href="/MyData/index.html#experience">Experience</a></li>
+                <li><a href="/MyData/index.html#education">Education</a></li>
+                <li><a href="/MyData/index.html#projects" class="active">Projects</a></li>
+                <li><a href="/MyData/index.html#skills">Skills</a></li>
+                <li><a href="/MyData/index.html#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="diabetes-tool">
+            <div class="container">
+                <div class="diabetes-header">
+                    <h1>Diabetes Prediction Tool</h1>
+                    <p>Enter your health metrics below to get a prediction on diabetes risk using a trained machine learning model. This prediction tool is based on the Pima Indians Diabetes Database.</p>
+                </div>
+                
+                <div class="diabetes-content">
+                    <div class="input-form">
+                        <h2 class="form-title">Enter Your Health Information</h2>
+                        <form id="diabetesForm">
+                            <div class="input-group">
+                                <label for="pregnancies">Number of Pregnancies</label>
+                                <input type="number" id="pregnancies" min="0" step="1" value="0">
+                                <div class="input-hint">For men, please enter 0</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="glucose">Glucose Level (mg/dL)</label>
+                                <input type="number" id="glucose" min="0" max="300" step="1" value="117">
+                                <div class="input-hint">Plasma glucose concentration after 2 hours in an oral glucose tolerance test</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="bloodPressure">Blood Pressure (mm Hg)</label>
+                                <input type="number" id="bloodPressure" min="0" max="200" step="1" value="72">
+                                <div class="input-hint">Diastolic blood pressure</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="skinThickness">Skin Thickness (mm)</label>
+                                <input type="number" id="skinThickness" min="0" max="100" step="1" value="23">
+                                <div class="input-hint">Triceps skin fold thickness</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="insulin">Insulin Level (Î¼U/ml)</label>
+                                <input type="number" id="insulin" min="0" max="1000" step="1" value="30">
+                                <div class="input-hint">2-Hour serum insulin</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="bmi">BMI (kg/mÂ²)</label>
+                                <input type="number" id="bmi" min="10" max="70" step="0.1" value="26.8">
+                                <div class="input-hint">Body mass index (weight in kg/(height in m)Â²)</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="diabetesPedigree">Diabetes Pedigree Function</label>
+                                <input type="number" id="diabetesPedigree" min="0.05" max="2.5" step="0.001" value="0.63">
+                                <div class="input-hint">Diabetes pedigree function (a function which scores likelihood of diabetes based on family history)</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="age">Age (years)</label>
+                                <input type="number" id="age" min="18" max="100" step="1" value="35">
+                            </div>
+                            
+                            <button type="submit" class="btn primary-btn">Predict Diabetes Risk</button>
+                        </form>
+                    </div>
+                    
+                    <div class="result-container">
+                        <div class="result-card" id="resultCard" style="display: none;">
+                            <div class="result-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h2 class="result-title">Prediction Result</h2>
+                            <div class="result-value" id="resultValue">-</div>
+                            <p class="result-message" id="resultMessage">Enter your information and click Predict to see your result.</p>
+                            <p class="result-disclaimer">This is for educational purposes only and should not replace professional medical advice.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3 class="info-title">About This Tool</h3>
+                            <p class="info-text">This diabetes prediction tool uses a logistic regression model trained on the Pima Indians Diabetes Database. The model analyzes several health metrics to estimate the likelihood of diabetes.</p>
+                            
+                            <h3 class="info-title">Risk Factors for Diabetes</h3>
+                            <ul>
+                                <li>Family history of diabetes</li>
+                                <li>Overweight or obesity</li>
+                                <li>Physical inactivity</li>
+                                <li>High blood pressure</li>
+                                <li>Abnormal cholesterol levels</li>
+                                <li>Age (risk increases as you get older)</li>
+                            </ul>
+                            
+                            <p class="info-text">If you are concerned about diabetes, please consult with a healthcare professional for proper screening and advice.</p>
+                        </div>
+                        
+                        <a href="/MyData/index.html#projects" class="back-link">
+                            <i class="fas fa-arrow-left"></i> Back to Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>AM</span>
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2025 Afonso Macedo. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/MyData/js/main.js"></script>
+    <script src="/MyData/js/diabetes-prediction.js"></script>
+</body>
+</html>
+

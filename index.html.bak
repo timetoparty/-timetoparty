@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afonso Macedo | Data Scientist & Analyst</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>AM</text></svg>">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <span>AM</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="animate-text">Afonso Macedo</h1>
+                    <h2 class="animate-text-delay">Data Scientist & Analyst</h2>
+                    <div class="hero-buttons animate-text-delay-3">
+                        <a href="#contact" class="btn primary-btn">Get In Touch</a>
+                        <a href="#experience" class="btn secondary-btn">View Experience</a>
+                    </div>
+                </div>
+                <div class="hero-image animate-fade-in">
+                    <div class="image-container">
+                        <div class="bg-shapes">
+                            <div class="shape shape-1"></div>
+                            <div class="shape shape-2"></div>
+                            <div class="shape shape-3"></div>
+                        </div>
+                        <div class="profile-img">
+                            <img src="assets/images/profile.jpg" alt="Afonso Macedo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div class="arrow">
+                    <span></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About Me</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I am a certified Data Scientist and Analyst with experience across various sectors. I recently completed certifications from MIT Professional Education and Cesae Digital, focusing on data analytics and data science.</p>
+                        <p>I consider myself a communicative person, curious, focused, available and relaxed, with a good spirit of mutual assistance and understanding. After having worked in several sectors, I now aim to establish myself and specialize in data science and analytics.</p>
+                        <p>I believe that data analysis will continue to be one of the most important methodologies to help organizations make strategic decisions, so that they can understand and improve their current and future results in a more sustainable way.</p>
+                        <p>I'm married with two daughters, balancing professional growth with family life.</p>
+                        <div class="personal-info">
+                            <div class="info-item">
+                                <span class="info-title">Email:</span>
+                                <span class="info-value">afonsocsmacedo@gmail.com</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-title">Phone:</span>
+                                <span class="info-value">91 247 95 85</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-title">LinkedIn:</span>
+                                <span class="info-value">linkedin.com/in/afonsosousamacedo</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">3+</div>
+                            <div class="stat-title">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">10+</div>
+                            <div class="stat-title">Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">2</div>
+                            <div class="stat-title">Certifications</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="experience">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Professional Experience</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">May 2024 - July 2024</div>
+                        <div class="timeline-content">
+                            <h3>Intern</h3>
+                            <h4>Data & Analytics Office, Galp</h4>
+                            <ul>
+                                <li>Data Management</li>
+                                <li>Data Cataloguing, Validation and Modelling</li>
+                                <li>Creation of Internal Documentation</li>
+                                <li>Participation in Key Projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">May 2019 - June 2020</div>
+                        <div class="timeline-content">
+                            <h3>Coordination</h3>
+                            <h4>Integrasys</h4>
+                            <ul>
+                                <li>Creation, management and organization of processes</li>
+                                <li>Coordination of the Technical Interventions Team</li>
+                                <li>Improvement and optimization of the digital platform</li>
+                                <li>Head of the Quality Department</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">August 2018 - March 2019</div>
+                        <div class="timeline-content">
+                            <h3>Rental Department</h3>
+                            <h4>Jungheinrich</h4>
+                            <ul>
+                                <li>Creating contracts and purchase orders (SAP)</li>
+                                <li>Assignment of license plates and QR codes for all fleet equipment (SAP)</li>
+                                <li>Creation and association of equipment (SAP)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">April 2017 - July 2018</div>
+                        <div class="timeline-content">
+                            <h3>Operational Manager</h3>
+                            <h4>Steps 4 Life</h4>
+                            <ul>
+                                <li>Rental processes</li>
+                                <li>Fleet management</li>
+                                <li>Negotiation with Partners and Brands</li>
+                                <li>Operational work management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">January 2016 - March 2017</div>
+                        <div class="timeline-content">
+                            <h3>Event Organization</h3>
+                            <h4>Various Organizations</h4>
+                            <ul>
+                                <li>"Future of Football" Congress - Sporting Clube de Portugal</li>
+                                <li>Millennium Estoril Open - 3Love</li>
+                                <li>World Padle Championship - Lagos Sport</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="education">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Education</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="education-cards">
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Certified Data Scientist</h3>
+                        <h4>Applied Data Science Program</h4>
+                        <p>MIT Professional Education</p>
+                        <p>Massachusetts Institute of Technology</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Certified Data Analyst</h3>
+                        <h4>Cesae Digital</h4>
+                        <p>Lisbon</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>Business Communication</h3>
+                        <h4>ISCEM</h4>
+                        <p>Lisbon</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>Studies</h3>
+                        <h4>PUC</h4>
+                        <p>Rio de Janeiro</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Projects</h2>
+                    <div class="section-line"></div>
+                </div>
+                    <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3>Travel Destination Predictor</h3>
+                        <p>A machine learning model that recommends travel destinations based on your preferences and travel style.</p>
+                        <a href="http://localhost:5000" class="btn primary-btn">Try It</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Diabetes Prediction</h3>
+                        <p>An interactive tool that uses machine learning to predict diabetes risk based on health metrics.</p>
+                        <a href="projects/diabetes.html" class="btn primary-btn">Try It</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>FoodHub Order Analysis</h3>
+                        <p>Analysis of food delivery data to identify patterns and optimize delivery operations.</p>
+                        <a href="projects/foodhub.html" class="btn primary-btn">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Boston Housing Price Prediction</h3>
+                        <p>Machine learning model to predict housing prices in Boston based on various features.</p>
+                        <a href="projects/boston-housing.html" class="btn primary-btn">View Project</a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Used Cars Price Prediction</h3>
+                        <p>Capstone project predicting used car prices using advanced regression techniques.</p>
+                        <a href="projects/used-cars.html" class="btn primary-btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Skills & Tools</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="skills-content">
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h3>Python</h3>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>Power BI</h3>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>MySQL</h3>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-table"></i>
+                            </div>
+                            <h3>Excel</h3>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <h3>R</h3>
+                            <div class="skill-level">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get In Touch</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Email</h3>
+                                <p>afonsocsmacedo@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Phone</h3>
+                                <p>91 247 95 85</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>LinkedIn</h3>
+                                <p>linkedin.com/in/afonsosousamacedo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm" action="https://formsubmit.co/afonsocsmacedo@gmail.com" method="POST">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_honeypot" value="">
+                            <input type="hidden" name="_subject" value="New Contact Form Submission">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="thank-you.html">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" placeholder="Subject">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn primary-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>AM</span>
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2025 Afonso Macedo. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
